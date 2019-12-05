@@ -1,5 +1,5 @@
 /**
- * Extensions and Overrides for existing JS methods/objects
+ * Extensions & Overrides to builtin JavaScript methods/objects
  *
  * @package WordPress
  * @subpackage Baker Design Theme 1.0
@@ -7,38 +7,23 @@
  **/
 
 /**
- * Make jQuery's next function loop to first child element if this is the last child
+ * Grab array/object element by key name
  *
- * @return Object [jQuery type 'object'] - next $(element) if it exists, or returns first $(element) child if subject is last-child
- * @uses $('.selector').Next();
+ * @param  array/object nestedObj - the array or object
+ * @param  string key
+ * @param  mixed fallback - optional
+ * @return mixed
  */
-$.fn.Next = function() {
-    if ($(this).is(':last-child')) {
-        return ($(this).siblings().first());
+$.grab = function(nestedObj, key, fallback) {
+    if (nestedObj !== null && typeof nestedObj[key] !== 'undefined') {
+        return nestedObj[key];
     } else {
-        return ($(this).next());
-    }
-};
-
-/**
- * Make jQuery's prev function loop to last child element if this is the first child
- *
- * @return Object [jQuery type 'object'] - prev $(element) if it exists, or returns last $(element) child if subject is first-child
- * @uses $('.selector-items').find(:Contains("text-to-find"));
- */
-$.fn.Prev = function() {
-    if ($(this).is(':first-child')) {
-        return ($(this).siblings().last());
-    } else {
-        return ($(this).prev());
+        return (typeof fallback !== 'undefined') ? fallback : '';
     }
 };
 
 /**
  * Make jQuery's Contains non-case-sensitive
- *
- * @return Boolean
- * @uses $('.items-to-search').find(:Contains("text-to-find"));
  */
 $.expr[":"].Contains = $.expr.createPseudo(function(arg) {
     return function(elem) {
@@ -48,23 +33,53 @@ $.expr[":"].Contains = $.expr.createPseudo(function(arg) {
 });
 
 /**
- * Replace all occurrences of a string
- *
- * @param String search string to be replaced
- * @param String replacement string to replace with
- * @return String
- * @uses str.replaceAll(' ', '')
+ * Check if element has siblings
  */
-String.prototype.replaceAll = function(search, replacement) {
-    var target = this;
-    return target.replace(new RegExp(search, 'g'), replacement);
+$.expr[":"].Sibling = $.expr.createPseudo(function(arg) {
+    return function(elem) {
+        return ($(elem).siblings().size() > 0);
+    };
+});
+
+$.fn.closestWithSiblings = function() {
+    return function(elem) {
+        var e = $(elem);
+        while ( e.siblings().size() == 0 ) {
+            e = e.parent();
+        }
+        return e;
+    };
 };
 
 /**
- * Extend Array with new 'containsAny' function for comparing two arrays
+ * Return HTML tag name
  *
- * @return Boolean
- * @uses array1.containsAny(array2);
+ * @return string
+ */
+$.fn.tagName = function() {
+    return this.prop("tagName").toLowerCase();
+};
+
+/**
+ * triggerAll jQuery Extension
+ *
+ * @param  string events (e.g. 'click blur')
+ * @param  params
+ * @return object
+ */
+$.fn.extend({
+    triggerAll: function(events, params) {
+        var el = this,
+            i, evts = events.split(' ');
+        for (i = 0; i < evts.length; i += 1) {
+            el.trigger(evts[i], params);
+        }
+        return el;
+    }
+});
+
+/**
+ * Extend Array with new 'containsAny' function for comparing two arrays
  */
 Array.prototype.containsAny = function(arr) {
     return this.some(function(v) {
@@ -73,12 +88,64 @@ Array.prototype.containsAny = function(arr) {
 };
 
 /**
- * Convert string to title case with JavaScript
+ * Helper String Methods/Extensions to the JS String Object
  *
  * @return String
+/*
+
+/* Reverse a string's characters */
+String.prototype.reverse = function() {
+    return this.split('').reverse().join('');
+};
+/* Check if string contains another substring | @param String search
+ * @return Boolean */
+String.prototype.contains = function(search) {
+    return (this.indexOf(search) !== -1);
+};
+/**
+ * Replace all instances of needle with provided string | @param String find | @param String replacement
+ * @return String
  */
+String.prototype.replaceAll = function(find, replacement) {
+    if (this.length > 0 && this.indexOf(find) > -1) {
+        return this.replace(new RegExp(find, 'g'), replacement);
+    } else {
+        return this.toString();
+    }
+};
+String.prototype.replaceEach = function(find, replacements) {
+    var me = this;
+    if (this.length > 0) {
+        find.forEach(function(a,b) {
+            me = me.replaceAll(a, replacements[b]);
+        });
+        return me;
+    } else {
+        return this.toString();
+    }
+};
+/**
+ * Case conversion helper methods | @type String
+ * @return String
+ */
+String.prototype.toTitleCase = function() {
+    return this.replace(/\w\S*/g, function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+};
+String.prototype.camelCaseToDashed = function() {
+    return this.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+};
 String.prototype.toProperCase = function() {
     return this.replace(/\w\S*/g, function(txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
+};
+String.prototype.toCamelCase = function() {
+    return this.replace(/(?:^\w|\-[A-Z]|\b\w)/g, function(letter, index) {
+        return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
+    }).replace(/\s+/g, '').replace('-', '');
+};
+String.prototype.toDashedCase = function() {
+    return this.toCamelCase().camelCaseToDashed();
 };
