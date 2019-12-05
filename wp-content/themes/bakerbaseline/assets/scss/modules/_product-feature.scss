@@ -1,0 +1,78 @@
+.product-feature {
+  @include make-container();
+  padding-bottom: $grid-gutter-width * 3;
+  overflow: hidden;
+
+  >ul {
+    list-style: none;
+
+    >li {
+      margin-bottom: 20px;
+      font-size: 2.2rem;
+
+      &:after {
+        content: "→";
+      }
+
+      &.overview-link {
+        font-size: 1.25rem;
+
+        a {
+          text-decoration: underline;
+        }
+
+        &:after {
+          content: none;
+        }
+      }
+
+      @include prefixer('transition', '1s ease all');
+      cursor: pointer;
+
+      &.active {
+        @include prefixer('transition', '1s ease all') color: $green;
+      }
+    }
+  }
+
+  >.slides {
+    >figure {
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+      @include prefixer('transition', '1.5s ease all');
+      opacity: 0;
+
+      &.active {
+
+        opacity: 1;
+        height: auto;
+        @include prefixer('transition', '1.5s ease all');
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  >ul {}
+
+  @include media-breakpoint-up(lg) {
+    @include make-row(12);
+    align-items: center;
+
+    >.slides {
+      @include make-col-ready();
+      @include make-col(1, 8, 8);
+
+
+    }
+
+    >ul {
+      @include make-col-ready();
+      @include make-col(10, 3, 3);
+    }
+  }
+}

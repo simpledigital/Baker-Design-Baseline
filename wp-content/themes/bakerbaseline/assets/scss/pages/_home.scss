@@ -1,0 +1,15 @@
+body.home {
+  .product-feature  {
+    padding-bottom: 550px;
+  }
+  #maincontent {
+    background-image: url('../img/wavy-bg.svg');
+    background-size: 100%;
+    background-position-y: 420px;
+    background-repeat: no-repeat;
+    &:before {
+      content: "";
+      
+    }
+  }
+}

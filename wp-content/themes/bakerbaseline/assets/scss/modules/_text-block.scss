@@ -1,0 +1,43 @@
+.bold-text-block {
+  .subheader {
+    a {
+      color: $dark-purple;;
+    }
+  }
+  h4 {
+    font-weight: 700;;
+    a {
+      color: $dark-purple;;
+    }
+  }
+  figure {
+    margin-bottom: 40px;
+  }
+}
+.icon-text-block {
+  overflow: hidden;
+  figure {
+    width: 25%;
+    margin: 0 auto 20px;
+    @include media-breakpoint-up(lg) {
+      margin: 0;
+      padding-right: 20px;
+      float: left;
+    }
+  }
+
+  p {
+    @include media-breakpoint-up(lg) {
+    float: right;
+    width: 100%;
+    padding-left: 25%;
+    }
+  }
+
+  h4 {
+    @include media-breakpoint-up(lg) {
+    float: right;
+    width: 75%;
+    }
+  }
+}

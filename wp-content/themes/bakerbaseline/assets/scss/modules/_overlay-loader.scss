@@ -1,0 +1,61 @@
+.loading-overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background:$body-font-color;
+  z-index: 99;
+  top: -100%;
+  opacity: 0;
+  @include prefixer('transition', "1s ease opacity");
+  &.fadeOut {
+    opacity: 0;
+    top: 0;
+  
+    @include prefixer('transition', '1s ease opacity');
+  }
+  &.active {
+    top: 0;
+    opacity: 1;
+    @include prefixer('transition', "1ps ease opacity");
+  }
+}
+  main, .site-logo, .hamburger {
+    @include prefixer('transition', ".75s ease opacity");
+
+  &.loading {
+    opacity: 0;
+    @include prefixer('transition', "1s ease opacity");
+  }
+}
+
+.loading-overlay {
+  .logo {
+    max-width: 200px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+    bottom: 0;
+    height: 60px;
+    opacity: 0;
+      @include prefixer('transition', 'ease 1.5s all');
+    svg { 
+      
+      path, rect {
+        fill: #fff;
+      }
+      .cls-1,
+      .cls-2 {
+        
+      }
+
+    }
+  }
+}
+
+.scrolled-item {
+  @include prefixer('transition', 'ease all .75s');
+  position: relative;
+}
+

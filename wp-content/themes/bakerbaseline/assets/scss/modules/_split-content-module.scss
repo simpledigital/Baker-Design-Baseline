@@ -1,0 +1,250 @@
+.split-content-module {
+
+  // grid-gap: 0;
+  >* {
+    &:last-child {
+
+      h3,
+      p {
+        color: #fff;
+        ;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+   @include make-row(2, false, 0);
+
+    >* {
+      @include make-col-ready();
+
+      &:first-child {
+        @include make-col(1, 6, 1);
+        // flex: 0 0 50%;
+      }
+
+      &:last-child {
+        // flex: 0 0 50%;
+        @include make-col(2, 6, 1);
+      }
+    }
+  }
+
+  >section {
+    padding: 60px;
+
+    &.email {
+      background: $faded-blue;
+      
+      .at-fieldset {
+        padding: 0;
+        .at-text {
+          color: $body-font-color;
+        }
+        input[type="tel"], input[type="email"] {
+          background: none;
+          padding: 23px 10px;
+          margin: 10px 0 20px 0;
+          border: solid 1px $body-font-color;
+          border-radius: 0;
+        }
+        .at-legend {
+          display: none;;
+        }
+      }
+      .ngp-form {
+        // background: none;
+        .at-form-submit{
+          padding: 0;
+          
+          .at-submit {
+            margin: 0;
+            float: none;;
+            border-radius: 0;
+            background: $primary;;
+            @extend .btn;
+            @extend .btn-primary;
+          }
+        }
+        .at-row > [class^="at-"] {
+          margin: 0;
+        }
+        .at-inner {
+          background: none;;
+        }
+        header.at-title, header.at-markup {
+          display: none;
+        }
+      }
+    }
+
+    &.donation {
+      background: $primary;
+      .ngp-form {
+        max-width: 100%;
+        .step-prevNext .next {
+          // float: left;
+        }
+      }
+      .multistep-layout.split-layout {
+        min-width: 0;
+        form {
+          width: 100%;
+        }
+      }
+
+      .at .at-fieldset {
+        padding: 0;
+      }
+
+      .at label {
+        color: #fff;
+      }
+
+      .at .at-radios {
+        margin-top: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        .label-amount {
+          float: none;
+
+          margin: 0;
+          width: auto;
+          flex: 0 0 50%;
+          -ms-flex: 0 0 50%;
+          max-width: 50%;
+
+          @include media-breakpoint-up(lg) {
+            flex: 0 0 33.3334%;
+            -ms-flex: 0 0 33.3334%;
+            max-width: 33.3334%;
+          }
+
+          &.label-otheramount {
+            flex: 0 0 100%;
+            -ms-flex: 0 0 100%;
+            max-width: 100%;
+
+            .label-otheramount-prefix {
+              position: absolute;
+              left: 20px;
+              color: #fff;
+              top: 42px;
+            }
+
+            input[type="number"] {
+
+              top: 0;
+              width: 100% !important;
+              right: 0;
+              padding-left: 40px;
+              border: solid 1px #fff;
+              background: transparent;
+              color: #fff;
+            }
+          }
+
+
+        }
+
+      }
+
+      .at .at-steps {
+        background: transparent;
+
+        border-radius: 0;
+        padding: 0 10px;
+
+        .at-step {
+          padding: 0;
+          margin: 0;
+          border-bottom: solid 1px #fff;
+
+          .step-title {
+            color: #fff;
+          }
+
+          &.active {
+            border-bottom: solid 5px #fff;
+
+          }
+
+        }
+
+        .at-step:nth-child(2) {
+          // border-left: solid 1px #fff;
+          // border-right: solid 1px #fff;
+        }
+      }
+
+      .ngp-form {
+        margin-top: 60px;
+        .prevNext.prev {
+          float: left;
+        }
+        .btn-at {
+          @extend .btn;
+          @extend .btn-white;
+          color: $primary;
+          &:hover {
+            background: none;
+          }
+        }
+
+        .at-fields {
+          .at-radio {
+            margin: 0;
+
+            label.label-otheramount {
+              text-align: left;
+
+            }
+
+            label.label-amount {
+              text-shadow: none;
+              letter-spacing: 0;
+              font-size: 1.2rem;
+              padding: 15px;
+              margin-bottom: 1.5rem;
+              font-weight: 700;
+
+              input:required {
+                background: transparent;
+              }
+
+              input:required::selection {
+                background: transparent;
+              }
+
+              input[type="radio"]:checked+a {
+                background: #62B0FF;
+
+              }
+
+              >a {
+                background: transparent;
+                border: solid 1px #fff;
+                border-radius: 0;
+                height: 100%;
+                width: 90%;
+
+                margin: 0 auto;
+
+              }
+            }
+          }
+        }
+
+        .at-inner {
+          background: none;
+        }
+
+        .at-title,
+        .at-markup {
+          display: none;
+        }
+      }
+    }
+  }
+}

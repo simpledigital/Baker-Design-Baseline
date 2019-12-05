@@ -4,7 +4,7 @@
 // Textual form controls
 //
 
-.form-control, input[type="text"], input[type="email"], input[type="tel"], select {
+.form-control, input[type="text"], input[type="email"], input[type="tel"], select, textarea {
   display: block;
   width: 100%;
   height: $input-height;
@@ -17,9 +17,35 @@
   background-color: $input-bg;
   background-clip: padding-box;
   border: $input-border-width solid $input-border-color;
+  &:focus {
+    border: 2px solid $input-border-color;
+  }
+  &.form-outline {
+    background: transparent;
+   
+    &:focus {
+      border-width: 2px;
+      background: transparent;
+      
+    } 
+    &.form-outline-primary {
+      border-color: $primary; 
+      color: $primary;
+      &:focus {
+        color: $primary;
+      }
+    }
+    &.form-outline-white {
+      border-color: #fff;
+      color: #fff;
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
 
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
-  @include border-radius($input-border-radius, 0);
+  // @include border-radius($input-border-radius, 0);
 
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
@@ -31,7 +57,7 @@
   }
 
   // Customize the `:focus` state to imitate native WebKit styles.
-  @include form-control-focus();
+  // @include form-control-focus();
 
   // Placeholder
   &::placeholder {
@@ -290,6 +316,7 @@ textarea.form-control, textarea {
       display: inline-block;
       width: auto; // Prevent labels from stacking above inputs in `.form-group`
       vertical-align: middle;
+
     }
 
     // Make static controls behave like regular ones
@@ -388,6 +415,38 @@ textarea.form-control, textarea {
     &:hover {
       background-color: transparent !important;
       color: $primary !important;
+    }
+  }
+}
+.wpforms-submit-container {
+  margin-top: 20px;
+  button {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+}
+
+.wpforms-field {
+  margin-bottom: 20px;
+  &.wpforms-has-error {
+    label.wpforms-error {
+      color: $red;
+      font-size: 1rem;
+padding: 10px 0 0 0;
+    }
+    input, textarea {
+      border-color: $red;
+    }
+  }
+  &.wpforms-field-checkbox, &.wpforms-field-radio {
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        label {
+          padding-left: 10px;
+        }
+      }
     }
   }
 }

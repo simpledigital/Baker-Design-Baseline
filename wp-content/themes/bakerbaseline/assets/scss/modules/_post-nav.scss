@@ -1,0 +1,35 @@
+.post-feed-nav-wrap {
+  @include make-container();
+  display: flex;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  > nav {
+    display: flex;
+    a {
+      padding: 0 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      // color: $body-font-color;
+    }
+    &.category-list {
+      a:first-child {
+        padding-left: 0;
+      }
+    }
+    &.year-archives {     
+      flex-direction: row-reverse;
+      padding-left: 20px;
+
+      margin-left: 20px;
+
+      border-left: 1px #c3e4ff solid;
+      a:first-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+

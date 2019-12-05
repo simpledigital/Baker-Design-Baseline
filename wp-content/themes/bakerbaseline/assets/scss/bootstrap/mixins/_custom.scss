@@ -15,3 +15,28 @@
   transition: $type $time $easing;
   // @include backface-visibility(hidden);
 }
+
+
+@mixin prefix($property, $value, $prefixes: null, $important: false) {
+  @if $prefixes == null {
+      @if variable-exists(browser-prefixes) {
+          $prefixes: $browser-prefixes;
+      } @else {
+          $prefixes: "webkit","moz","ms","o";
+      }
+  }
+  @if $important == true {
+      $value: unquote($value) !important;
+  }
+  @each $prefix in $prefixes {
+      #{"-" + $prefix + "-" + $property}: unquote($value);
+  }
+  #{$property}:  unquote($value);
+}
+
+/**
+* Alias for `@mixin prefix`'
+*/
+@mixin prefixer($property, $value, $prefixes: null, $important: false) {
+  @include prefix($property, $value, $prefixes, $important);
+}

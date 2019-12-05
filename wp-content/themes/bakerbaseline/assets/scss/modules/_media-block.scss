@@ -1,0 +1,156 @@
+.media-block {
+ 
+  margin-bottom: $grid-gutter-width * 3;
+
+  &.option-one {
+    margin-right: 40px;
+    background: $primary;
+    >div {
+      
+      align-items: center;
+
+      padding: 40px 20px;
+
+      @include media-breakpoint-up(lg) {
+        @include make-row(12);
+        padding: 80px 50px;
+      }
+
+      >section {
+        @include make-col-ready;
+
+        @include media-breakpoint-up(md) {
+          max-width: 60%;
+          margin: 0 auto;
+        }
+
+        @include media-breakpoint-up(lg) {
+          @include make-col(7, 5, 5);
+          max-width: 100%;
+          margin: 0;
+        }
+
+        a.cta-link {
+          color: #fff;
+        }
+
+        h4 {
+          margin-bottom: 30px;
+        }
+
+        h4,
+        h5 {
+          color: #fff;
+        }
+      }
+
+      >figure {
+        @include make-col-ready;
+
+        @include media-breakpoint-up(md) {
+          max-width: 60%;
+          margin: 0 auto 40px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          @include make-col(2, 5, 5);
+          max-width: 100%;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &.option-two {
+    >div {
+      >figure {
+        margin: 0;
+      }
+
+      >section {
+        background: $dark-purple;
+        padding: 40px 20px;
+
+        h2 {
+          margin-bottom: 30px;
+        }
+
+        h4 {
+          margin-bottom: 40px;
+        }
+
+        h2,
+        h4,
+        a {
+          color: #fff;
+        }
+      }
+
+      @include media-breakpoint-up(lg) {
+
+        @include make-row(12, true, 0);
+
+        >section {
+          @include make-col(9, 4, 4);
+          padding: 60px 40px;
+        }
+
+        >figure {
+          @include make-col(1, 8, 8);
+        }
+      }
+
+    }
+  }
+
+  &.option-three {
+ @include make-container();
+    padding-top: 90px;
+    padding-left: 80px;
+    position: relative;
+    &:before {
+      content: "";
+      background: url('../img/card-pattern-bg.svg');
+      display: block;
+      width: 400px;
+      height: 380px;
+      top: 0;
+      left: 20px;
+      position: absolute;
+    }
+
+    >div {
+      background: #fff;
+      position: relative;
+      z-index: 2;
+
+      @include prefixer('box-shadow', '0 0 40px rgba(60, 112, 252, .4)');
+
+      >section {
+        padding: 20px;
+      }
+
+      >figure {
+        margin: 0;
+      }
+
+      @include media-breakpoint-up(lg) {
+
+        @include make-row(12, true, 0);
+        align-items: center;
+
+        >section {
+          @include make-col(1, 6, 6);
+          padding: 0 100px;
+          grid-row: 1;
+        }
+
+        >figure {
+          @include make-col(7, 6, 6);
+          grid-row: 1;
+
+        }
+      }
+    }
+  }
+}

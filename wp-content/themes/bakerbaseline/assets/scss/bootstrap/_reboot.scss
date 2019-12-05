@@ -46,12 +46,14 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0; // 1
   font-family: $font-family-base;
-  @include font-size($font-size-base);
+  // @include font-size();
+  font-size: $font-size-base * 1.25;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
   text-align: left; // 3
   background-color: $body-bg; // 2
+  top: 0 !important;
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -292,8 +294,8 @@ label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: $label-margin-bottom;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: $font-size-base * 1.25;
+  font-weight: 400;
   color: $light-text-gray;
 }
 

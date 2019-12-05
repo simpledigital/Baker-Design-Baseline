@@ -1,0 +1,131 @@
+.mulit-column-content-module {
+  background: $primary;
+  padding-top: 260px;
+  padding-bottom: 80px;
+  position: relative;
+  @include media-breakpoint-up(md) { 
+    &:before {
+      content: "";
+      display: block;
+      width: 61px;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      background-image: url('../img/footer-pattern.png');
+      top: 0;
+      background-size: 61px;
+      background-repeat: repeat-y;
+      background-position: 0px 6%;
+    }
+  }
+  @include media-breakpoint-up(sm) { 
+    // padding-top: 200px;
+    padding-bottom: 80px;
+  }
+  > div {
+    @include make-container(small);
+    @include make-row(1, true);
+    
+    @include media-breakpoint-up(sm) { 
+      @include make-row(3, true);
+      > article {
+        width: 33.3334%;
+      }
+      @supports(display: grid) {
+        > article {
+          width: auto;
+        }
+      }
+      
+    }
+    > article {
+      text-align: center;
+      p {
+        margin-bottom: 0;
+      }
+      > a {
+        color: #fff;
+        font-weight: 700;
+        margin-top: 20px;
+        display: inline-block;
+        border-bottom: solid 2px $blue;;
+        &:hover {
+          color: $blue;
+          text-decoration: none;
+        }
+      }
+        
+        &:nth-child(2) {
+          position: relative;
+          &::before, &:after {
+            content: "";
+            background: rgba(208, 204, 218, 0.4);
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            left: 0;
+            right: 0;
+            @include media-breakpoint-up(sm) { 
+              width: 2px;
+              height: 60%;
+              
+              
+              margin: auto 0;
+            }
+          }
+          &:before {
+            bottom: -$grid-gutter-width / 2;;
+            @include media-breakpoint-up(sm) {
+              left: -$grid-gutter-width / 2;
+              right: auto;
+              bottom: 0;
+              top: 0;
+            }
+          }
+          &:after {
+            top: -$grid-gutter-width / 2;;
+            @include media-breakpoint-up(sm) {
+              right: -$grid-gutter-width / 2;
+              top: 0;
+              bottom: 0;
+              left: auto;
+            }
+          }
+        }
+        
+      h4.subheader {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+      h3 {
+        
+        color: $secondary;
+        font-weight: 900;
+        font-size: 3.5rem;
+        @include media-breakpoint-up(md) {
+          font-size: 4rem;
+        }
+      }
+      p {
+        color: #fff;
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
+  }
+  > section {
+    @include make-container(tiny);
+    text-align: center;
+    padding-bottom: 80px;
+    @include media-breakpoint-up(sm) { 
+      padding-bottom: 120px;
+    }
+    > a {
+      @include text_cta(#fff, $blue, $blue, $blue);
+    }
+    > h2, p {
+      color: #fff;
+    }
+    
+  }
+}

@@ -1,0 +1,174 @@
+.site-footer {
+  background: $body-font-color;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  &.with-copy {
+    >div.secondary-footer {
+      margin-top: 40px;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding-top: 80px;
+    padding-bottom: 40px;
+  }
+
+  >div.primary-footer {
+    @include make-container();
+
+    @include media-breakpoint-up(lg) {
+      margin-top: 0;
+      @include make-row(2);
+      align-content: start;
+    }
+
+    >div {
+      @include make-col-ready();
+      @include make-col(1, 1, 1);
+
+      figure {
+        margin: 60px 0;
+
+        @include media-breakpoint-up(lg) {
+          margin-top: 220px;
+        }
+
+        img {
+          max-width: 290px;
+        }
+      }
+
+      p {
+
+        font-size: $font-size-lg;
+        color: #fff;
+
+        @include media-breakpoint-up(md_custom) {
+          max-width: 65%;
+        }
+
+        @include media-breakpoint-up(lg) {
+          max-width: 50%;
+        }
+
+        a {
+          color: #fff;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    >figure {
+      @include make-col-ready();
+      @include make-col(1, 1, 1);
+
+      &.footer-logo-with-copy {}
+
+      img {
+        max-width: 290px;
+      }
+    }
+
+    nav {
+      @include make-col-ready();
+
+      @include media-breakpoint-up(lg) {
+        @include make-col(2, 1, 1);
+        // align
+      }
+
+      >ul {
+
+        list-style: none;
+        padding: 0;
+        margin-bottom: 40px;
+        display: flex;
+        flex-wrap: wrap;
+
+        >li {
+          max-width: 50%;
+          flex: 0 0 50%;
+          -ms-flex: 0 0 50%;
+          margin-bottom: 30px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          @include media-breakpoint-up(md_custom) {
+            margin-bottom: 0;
+            max-width: 33%;
+            flex: 0 0 33%;
+            -ms-flex: 0 0 33%;
+          }
+
+          >ul {
+            padding: 0;
+
+            >li {
+              padding: 0 0 20px 0;
+
+              >a {}
+            }
+          }
+
+          span {
+            display: none;
+          }
+
+          a {
+            color: #fff;
+
+            &::before {
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  >div.secondary-footer {
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: solid 1px #fff;
+    @include make-container();
+    >p {
+      color: #fff;
+      font-size: $font-size-sm;
+
+    }
+
+    >nav {
+      ul {
+        
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        @include media-breakpoint-up(md_custom) {
+          display: flex;
+          margin-top: 0;
+        }
+        li {
+          width: 50%;
+          margin-bottom: 20px;
+          @include media-breakpoint-up(md_custom) {
+            margin-bottom: 0;
+          }
+
+          a {
+            color: #fff;
+            font-size: $font-size-sm;
+          }
+        }
+      }
+    }
+
+  @include media-breakpoint-up(lg) {
+      margin-top: 120px;
+      
+      @include make-row(2);
+
+    }
+  }
+
+}

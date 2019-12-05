@@ -1,0 +1,39 @@
+.basic-grid {
+  .ngp-form {
+    max-width: 100%;
+    #NVVolunteerForm2400000000003999 {
+      .at-fieldset {
+        min-width: 0;
+      }
+      form {
+        // display: flex;
+        // flex-wrap: wrap;
+        // > .at-fieldset.ContactInformation {
+        //   flex:  0 0 50%;
+        //   -ms-flex:  0 0 50%;
+        //   max-width: 50%;
+        // }
+        // > .at-fieldset.Interests {
+        //   flex:  0 0 50%;
+        //   -ms-flex:  0 0 50%;
+        //   max-width: 50%;
+        // }
+      }
+    }
+  }
+  .at input[type="text"], .at input[type="password"], .at input[type="date"], .at input[type="datetime"], .at input[type="datetime-local"], .at input[type="month"], .at input[type="week"], .at input[type="email"], .at input[type="number"], .at input[type="search"], .at input[type="tel"], .at input[type="time"], .at input[type="url"], .at input[type="color"], .at textarea {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 1.5rem + 2px);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #5D5C69;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid $body-font-color;
+    border-radius: 0.15rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+}

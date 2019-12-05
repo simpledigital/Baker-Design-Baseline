@@ -1,0 +1,102 @@
+.blockquote-module {
+  &.has-background {
+    background-color: $faded-blue;
+  
+    &.small-margin {
+      > div {
+        margin-bottom: 20px;
+        @include media-breakpoint-up(md) {
+    
+          margin-bottom: 40px;
+        }
+      }
+    }
+    &.no-margin {
+      
+    }
+    > div {
+      &:before {
+        content: none;
+      }
+      &:after {
+        content: none;
+      }
+    }
+    &.top-border {
+      > div {
+   
+        &:before {
+          content: "";
+          background: $dark-purple;
+          height: 1px;
+          @include media-breakpoint-up(md) {
+            grid-column: 4 / span 6;
+            position: absolute;
+            top: 0;
+            width: 100%; 
+          }
+        }
+      }
+    }
+  }
+  
+  > div {
+    @include make-container();
+    padding: 80px 0;
+
+    margin-bottom: 80px;
+    position: relative;
+    @include media-breakpoint-up(md) {
+
+      margin-bottom: 120px;
+    }
+    &:before {
+      content: "";
+      background: $dark-purple;
+      height: 1px;
+      @include media-breakpoint-up(md) {
+        grid-column: 4 / span 6;
+        position: absolute;
+        top: 0;
+        width: 100%; 
+      }
+    }
+    &:after {
+      content: "";
+      background: $dark-purple;
+      height: 1px;
+      @include media-breakpoint-up(md) {
+        grid-column: 4 / span 6;
+        position: absolute;
+        bottom: 0;
+        width: 100%; 
+      }
+    }
+  
+
+    >figure {
+      img {
+        @include prefixer('border-radius', '100%');
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      @include make-row(12);
+      align-items: center;
+
+      >blockquote {}
+    }
+
+    @include media-breakpoint-up(lg) {
+      >blockquote {
+        grid-column: 6 / span 5;
+      }
+
+      >figure {
+        grid-column: 3 / span 3;
+      }
+    }
+  }
+}

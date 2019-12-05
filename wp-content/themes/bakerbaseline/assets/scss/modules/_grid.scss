@@ -1,113 +1,182 @@
 .basic-grid {
-  @include make-container(small );
-  padding-bottom: 120px;
-  > div {
-    .phone {
-      padding-left: 30px;
-      position: relative;
-      &::before {
-        content: "";
-        background: url('../img/phone.svg');
-        display: block;
-        width: 25px;
-        height: 29px;
-        position: absolute;
-        left: 0;
-      }
-    }
-    .address {
-      padding-left: 30px;
-      position: relative;
-      &::before {
-        content: "";
-        background: url('../img/marker.svg');
-        display: block;
-        width: 25px;
-        height: 32px;
-        position: absolute;
-        left: 0;
-      }
-    }
-    iframe {
-      width: 100%;
-    }
+  padding-bottom: $grid-gutter-width * 3;
+  &.has-border {
+    margin-bottom: $grid-gutter-width * 3;
+    border-bottom: solid 1px $dark-purple;
   }
+  
+  &.small {
+    @include make-container(small);
+  }
+  &.medium {
+    @include make-container(medium);
+  }
+  &.large {
+    @include make-container(large);
+  }
+ 
+ 
+
   &.one-col {
     @include make-container(xsmall);
+
+    &.tiny {
+      @include make-container(tiny);
+    }
+
   }
-  &.two-col {
+
+  &.one-col-full {
+    @include make-container();
+    padding-bottom: 40px;
+
     @include media-breakpoint-up(md) {
-      @include make-row(2);
-    }
-    > div {
-      @include make-col-ready();
-      &:nth-child(2n+1) { 
-        @include media-breakpoint-up(md) {
-          @include make-col(1,6,1);
-        }
-      }
-      &:nth-child(2n+2) { 
-        @include media-breakpoint-up(md) {
-          @include make-col(2,6,1);
-        }
-      }
+      padding-bottom: 120px;
     }
   }
-  &.three-col {
-    @include media-breakpoint-up(md) { 
-      @include make-row(2);
-    }
-    @include media-breakpoint-up(lg) {
-      @include make-row(3);
-    }
-    > div {
-      &:nth-child(3n+1) {
-        @include media-breakpoint-up(md) { 
-          @include make-col(1,6,1);
-        }
-        @include media-breakpoint-up(lg) {
-          @include make-col(1,4,1);
-        }
-      } 
-      &:nth-child(3n+2) {
-        @include media-breakpoint-up(md) { 
-          @include make-col(2,6,1); 
-        }
-        @include media-breakpoint-up(lg) {
-          @include make-col(2,4,1);
-        }
-      } 
-      &:nth-child(3n+3) {
-        @include media-breakpoint-up(lg) {
-          @include make-col(3,4,1);
-        }
-      } 
-    }
-  }
-  &.two-thirds {
+
+  &.two-col {
     @include media-breakpoint-up(md) {
       @include make-row(12);
     }
-    > div {
+    &.bold-text-block-grid {
+      @include media-breakpoint-up(md) {
+        @include make-row(2, true, 60px);
+      }
+    }
+    
+
+    >* {
       @include make-col-ready();
+      margin: 0 0 40px;
+      @include media-breakpoint-up(md_custom) {
+        max-width: 60%;
+        margin: 0 auto 40px;
+      }
+      @include media-breakpoint-up(lg) {
+        max-width: 100%;
+        margin: 0 ;
+      }
+
       &:nth-child(2n+1) {
         @include media-breakpoint-up(md) {
-          
-          @include make-col(1,6,6);
-        }
-        @include media-breakpoint-up(lg) {
-          @include make-col(1,8,7);
+          @include make-col(1, 6, 1);
         }
       }
+
       &:nth-child(2n+2) {
         @include media-breakpoint-up(md) {
-          @include make-col(7,6,6); 
-          
+          @include make-col(2, 6, 1);
+        }
+      }
+      &.cta-link {
+        @include media-breakpoint-up(md) {
+          @include make-col(1, 12, 12);
+        }
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &.three-col {
+   
+    >* {
+      margin-bottom: 20px;
+    }
+    &.bold-text-block-grid {
+      @include media-breakpoint-up(lg) {
+        @include make-row(12, true, 60px);
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      >div {
+        margin-bottom: 0;
+      }
+      @include make-row(12);
+    }
+    >* {
+      margin: 0 0 40px;
+      @include media-breakpoint-up(md_custom) {
+        max-width: 60%;
+        margin: 0 auto 40px;
+      }
+      @include media-breakpoint-up(lg) {
+        max-width: 100%;
+        margin: 0;
+      }
+      
+
+      &:nth-child(3n+1) {
+        @include media-breakpoint-up(lg) {
+          @include make-col(1, 4, 4);
+        }
+      }
+
+      &:nth-child(3n+2) {
+        @include media-breakpoint-up(lg) {
+          @include make-col(5, 4, 4);
+        }
+      }
+
+      &:nth-child(3n+3) {
+        @include media-breakpoint-up(lg) {
+          @include make-col(9, 4, 4);
+        }
+      }
+      &.cta-link {
+        @include media-breakpoint-up(md_custom) {
+          max-width: 60%;
+          margin: 0 auto 40px;
+          display: block;
+          text-align: center;
         }
         @include media-breakpoint-up(lg) {
-          @include make-col(8,4,5); 
+          @include make-col(1, 12, 12);
+          margin: 0 0 40px;
+          display: inline-block;
+          text-align: left;
+          max-width: 100%;
         }
-      } 
+      
+      }
     }
+  }
+}
+
+.post-nav-links {
+  margin: 0;
+
+  @include make-container();
+  padding-bottom: 80px;
+  list-style: none;
+  ;
+  font-weight: 700;
+  ;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 38.25%;
+  padding-top: 25px;
+  height: 0;
+  max-width: 70%;
+  margin: 0 auto;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.image-grid {
+  h5 {
+    text-align: center;
+    margin-bottom: 20px;
   }
 }

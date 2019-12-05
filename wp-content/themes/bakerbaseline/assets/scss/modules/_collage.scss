@@ -1,0 +1,145 @@
+.collage {
+    margin-bottom: $grid-gutter-width * 3;
+    align-items: center;
+    @include make-container();
+    @include media-breakpoint-up(lg) {
+     
+      @include make-row(12);
+    
+    }
+    &.hero-collage {
+      section {
+        h3 {
+          margin-bottom: 25px;
+        }
+        p {
+          font-size: $font-size-lg;
+        }
+      }
+    }
+    &.list-collage {
+      section {
+        div {
+          margin-bottom: 60px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    &.quote-collage {
+      &.option-one {
+        section {
+          h3 {
+            margin-bottom: 15px;
+            padding-bottom: 30px;
+            border-bottom: solid 1px $body-font-color;
+          }
+        }
+      }
+      &.option-two {
+        section {
+          h3 {
+            margin-bottom: 25px;
+          }
+        }
+      }
+      section {
+        
+        > p {
+          font-size: $font-size-lg;
+        }
+        blockquote {
+          p {
+            margin-bottom: 5px;
+          }
+          cite {
+            font-size: .85rem;
+            font-style: normal;
+          }
+        }
+        .option-two-quote { 
+          display: flex;
+          flex-wrap: wrap;
+          margin-top: 60px;
+          justify-content: end;
+          .quote-image {
+            width: 25%;;
+            img {
+              border-radius: 100%;
+            }
+          }
+          blockquote {
+            width: 75%;
+            padding-left: 20px;
+          } 
+          .logo-image {
+            width: 120px;
+  
+            margin-top: -50px;
+          }
+        }
+        .option-one-quote {
+          blockquote {
+            width: 80%;;
+          }
+          figure {
+            max-width: 120px;
+            float: right;
+            margin-top: -50px;
+          }
+        }
+      }
+    }
+    figure img {
+      width: 100%;
+    }
+    figure,
+    section {
+      @include make-col-ready();
+      grid-row: 1;
+      @include media-breakpoint-up(md_custom) {
+        max-width: 60%;
+        margin: 0 auto;
+      }
+      @include media-breakpoint-up(lg) {
+        max-width: 100%;
+        margin: 0 ;
+      }
+    }
+
+    &.image-right {
+      figure {
+        @include media-breakpoint-up(lg) {
+          @include make-col(7, 6, 6 );
+        }
+      }
+
+      section {
+        @include media-breakpoint-up(lg) {
+          @include make-col(2, 5, 5);
+        }
+        @include media-breakpoint-up(xl) {
+          @include make-col(2, 4, 4);
+        }
+      }
+    }
+
+    &.image-left {  
+      figure {
+        @include media-breakpoint-up(lg) {
+          @include make-col(1, 6, 6);
+        }
+        
+      }
+
+      section {
+        @include media-breakpoint-up(lg) {
+          @include make-col(7, 5, 5);
+        }
+        @include media-breakpoint-up(xl) {
+          @include make-col(8, 4, 4);
+        }
+      }
+    }
+  }

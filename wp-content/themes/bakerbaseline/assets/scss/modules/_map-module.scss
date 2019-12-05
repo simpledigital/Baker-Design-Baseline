@@ -1,0 +1,31 @@
+.map-module {
+  @include make-container();
+  padding-bottom: 120px;
+  @include media-breakpoint-up(md) {
+    @include make-row(12);
+    > section {
+      @include make-col-ready();
+      @include make-col(1, 4, 4);
+      form {
+        margin-top: 40px;
+        margin-bottom: 40px;;
+        display: flex;
+        justify-content: space-between;
+        select {
+          width: 70%;
+          
+        }
+      }
+    }
+    > #map-container {
+      @include make-col-ready();
+      @include make-col(6, 7, 7);
+    }
+  }
+  #map-container {
+    iframe {
+      height: 600px;
+      width: 100%;
+    }
+  }
+}

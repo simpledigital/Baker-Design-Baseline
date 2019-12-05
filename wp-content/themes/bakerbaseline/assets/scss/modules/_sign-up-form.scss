@@ -1,0 +1,77 @@
+.sign-up-form {
+  @include make-container();
+    padding-top: 40px;
+    padding-bottom: 40px;
+  > figure {
+    margin: 40px auto 0;
+    @include media-breakpoint-up(lg){
+      margin: 0;
+    }
+    img {
+      border-radius: 100%;
+    }
+  }
+  @include media-breakpoint-up(lg){
+    @include make-row(12);
+    padding-top: 120px;
+    padding-bottom: 120px;
+    > section { 
+      @include make-col-ready();
+      @include make-col(1, 8, 8);
+      h1 {
+        padding-bottom: 80px;
+        margin-bottom: 80px;
+        border-bottom: solid 1px $primary;
+      }
+      .signup-form {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+    }
+    > figure {
+      // @include make-col-ready();
+      @include make-col(9, 4, 4);
+      padding: 0 40px;
+     
+    }
+  }
+  
+  .ngp-form {
+    max-width: 100%;
+    margin: 0;
+    .poweredby {
+      display: none;
+    }
+    .at-form-submit {
+      padding: 0;
+      margin-top: 20px;
+      .at-submit {
+        float: none;
+        margin: 0;
+        background: $primary;
+        border-radius: none;
+        border: solid 2px transparent;
+        &:hover {
+          color: $primary;
+          border: $primary 2px solid;
+          background: transparent;
+        }
+      }
+    }
+    .at-fieldset {
+      padding: 0;
+      .at-legend {
+        margin: 0;
+        display: none;
+      }
+      .at-row > [class^="at-"] {
+        margin: 0;
+      }
+    }
+  }
+  header {
+    &.at-title, &.at-markup {
+      display: none;
+    }
+  }
+}

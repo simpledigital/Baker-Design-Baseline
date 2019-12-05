@@ -27,9 +27,134 @@
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
+
   // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
+  &.active {
+    display: block;
+  }
+
+  &.event-modal {
+    .modal-content {
+      margin-top: 60px;
+      .modal-body {
+        margin-top: 40px;
+        h6 {
+          font-weight: 400;
+          font-family: $font-family-sans-serif;
+        }
+        h3 {
+          color: $primary;
+          margin-bottom: 40px;
+        }
+      }
+    }
+
+    .modal-close {
+      border: none;
+      background: none;
+      text-align: right;
+      font-size: 0;
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      &::before {
+        content: "\f057";
+        font-family: "FontAwesome";
+        font-size: 1.3rem;
+      }
+    }
+
+    .share-link form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+
+      align-items: center;
+
+      h6 {
+        width: 100%;
+      }
+
+      button {
+        width: 25%;
+        align-self: flex-end;
+      }
+
+      input {
+        border: solid 1px $primary;
+        width: 70%;
+        color: $primary;
+        // overflow: hidden;
+        // white-space: nowrap;
+        // padding: 10px;
+        // margin-bottom: 0;
+        font-weight: 700;
+      }
+    }
+
+    .share-link,
+    .social-share {
+      h6 {
+        font-weight: 400;
+      }
+    }
+
+    .social-share {
+      margin-top: 40px;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        display: flex;
+        padding: 0;
+
+        li {
+          padding: 0 20px 0 0;
+
+          a {
+            font-size: 0;
+            color: $body-font-color;
+
+            &::before {
+              font-size: 1.5rem;
+            }
+
+            &.facebook {
+
+              &::before {
+                content: "\f39e";
+                font-family: "FontAwesome";
+              }
+
+            }
+
+            &.twitter {
+
+              &::before {
+                content: "\f099";
+                font-family: "FontAwesome";
+              }
+
+            }
+
+            &.linkedin {
+
+              &::before {
+                content: "\f0e1";
+                font-family: "FontAwesome";
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // Shell div to position the modal with bottom padding
@@ -45,6 +170,7 @@
     @include transition($modal-transition);
     transform: $modal-fade-transform;
   }
+
   .modal.show & {
     transform: $modal-show-transform;
   }
@@ -126,8 +252,13 @@
   background-color: $modal-backdrop-bg;
 
   // Fade for backdrop
-  &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.fade {
+    opacity: 0;
+  }
+
+  &.show {
+    opacity: $modal-backdrop-opacity;
+  }
 }
 
 // Modal header
@@ -173,8 +304,13 @@
   @include border-bottom-radius($modal-content-border-radius);
 
   // Easily place margin between footer elements
-  > :not(:first-child) { margin-left: .25rem; }
-  > :not(:last-child) { margin-right: .25rem; }
+  > :not(:first-child) {
+    margin-left: .25rem;
+  }
+
+  > :not(:last-child) {
+    margin-right: .25rem;
+  }
 }
 
 // Measure scrollbar width for padding body during modal show/hide
@@ -188,6 +324,7 @@
 
 // Scale up the modal
 @include media-breakpoint-up(sm) {
+
   // Automatically set modal's width for larger viewports
   .modal-dialog {
     max-width: $modal-md;
@@ -214,10 +351,13 @@
     @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
-  .modal-sm { max-width: $modal-sm; }
+  .modal-sm {
+    max-width: $modal-sm;
+  }
 }
 
 @include media-breakpoint-up(lg) {
+
   .modal-lg,
   .modal-xl {
     max-width: $modal-lg;
@@ -225,5 +365,7 @@
 }
 
 @include media-breakpoint-up(xl) {
-  .modal-xl { max-width: $modal-xl; }
+  .modal-xl {
+    max-width: $modal-xl;
+  }
 }
